@@ -7,15 +7,14 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.ws.rs.NotFoundException;
 
 @Entity
+@Table(indexes = @Index(columnList = "email", unique = true))
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,4 +33,9 @@ public class Teammate extends PanacheEntityBase {
     @Email
     @Size(max = 100)
     public String email;
+
+    public static Teammate findByEmail(String email){
+        return (Teammate) find("email", email).singleResultOptional()
+                .orElseThrow(() ->  new NotFoundException("no teammate for given email"));
+    }
 }

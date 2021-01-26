@@ -2,7 +2,14 @@
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Application API
+
+Application API is exposed using [swagger api](https://quarkus.io/guides/openapi-swaggerui), you can see your API [here](http://localhost:8080/q/swagger-ui)
+and you can download your API [here](http://localhost:8080/q/openapi) 
+
+## Health check
+
+Health check is made with [microprofile](https://quarkus.io/guides/microprofile-health) it's available [here](http://localhost:8080/q/health) 
 
 ## Running the application in dev mode
 
