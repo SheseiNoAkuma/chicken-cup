@@ -56,9 +56,3 @@ You can then execute your native executable with: `./target/chicken-cup-1.0-SNAP
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html
 .
-
-# RESTEasy JAX-RS
-
-<p>A Hello World RESTEasy resource</p>
-
-Guide: https://quarkus.io/guides/rest-json
