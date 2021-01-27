@@ -18,6 +18,10 @@
         <quarkus-plugin.version>1.11.0.Final</quarkus-plugin.version>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+        <!-- sonar -->
+        <sonar.projectKey>microhatesyou_chicken-cup</sonar.projectKey>
+        <sonar.organization>microhatesyou</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencyManagement>
         <dependencies>
