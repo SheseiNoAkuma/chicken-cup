@@ -24,7 +24,7 @@ public class Badge extends PanacheEntityBase {
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     public String id;
-    @NotNull(message = "name cannot be null")
+    @NotNull
     @Size(max = 200)
     public String name;
     @Size(max = 100)

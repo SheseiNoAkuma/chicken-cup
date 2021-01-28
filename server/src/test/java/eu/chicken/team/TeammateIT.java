@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
+import javax.ws.rs.NotFoundException;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -69,11 +70,23 @@ class TeammateIT {
     @DisplayName("verify findByEmail")
     void findByEmail() {
         // given
-        Teammate expected = Teammate.builder().name("User").email("user@domain.it").build();
-        expected.persistAndFlush();
+        Teammate expected = Teammate.builder().name("User").email("findByEmail@domain.it").build();
+        Team team = Team.builder().name("team").build().addMember(expected);
+        team.persistAndFlush();
         // when
-        Teammate actual = Teammate.findByEmail(expected.email);
+        Teammate actual = Teammate.findByTeamAndEmail(team.id, expected.email);
         // then
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("findByEmail no entity found expect exception")
+    void findByEmailException() {
+        // when
+        Throwable thrown = catchThrowable(() -> Teammate.findByTeamAndEmail("uuid", "findByEmailException@domain.it"));
+        // then
+        assertThat(thrown)
+                .isInstanceOf(NotFoundException.class)
+                .hasMessageContaining("no teammate for given email <findByEmailException@domain.it> in team <uuid>");
     }
 }
