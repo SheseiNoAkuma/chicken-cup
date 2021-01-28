@@ -8,6 +8,7 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
+        <failsafe-plugin.version>3.0.0-M4</failsafe-plugin.version>
         <maven.compiler.target>11</maven.compiler.target>
         <quarkus.platform.version>1.11.0.Final</quarkus.platform.version>
         <maven.compiler.source>11</maven.compiler.source>
@@ -149,7 +150,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${surefire-plugin.version}</version>
+                <version>${failsafe-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -161,6 +162,7 @@
                                 <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                             </systemPropertyVariables>
+                            <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
                         </configuration>
                     </execution>
                 </executions>
