@@ -21,7 +21,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 @QuarkusTest
 @QuarkusTestResource(H2DatabaseTestResource.class)
 @Transactional
-class TeammateIT {
+class TeammateTest {
 
     @Inject
     Validator validator;
